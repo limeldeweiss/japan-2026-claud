@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>日本北海道8日遊</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#1a2744;
+  --navy-light:#243259;
+  --lavender:#7c6fa0;
+  --lavender-light:#a99cc8;
+  --red:#c0392b;
+  --cream:#f8f6f2;
+  --warm-white:#fffef9;
+  --text:#2c2c2c;
+  --text-light:#666;
+  --border:#e0ddd8;
+  --shadow:0 2px 16px rgba(26,39,68,0.10);
+}
+html,body{width:100%;overflow-x:hidden;background:var(--cream);color:var(--text);font-family:'Noto Sans TC',sans-serif}
+
+.banner{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 50%,#2d4a8a 100%);color:#fff;position:relative;overflow:hidden;padding:0}
+.banner-bg{position:absolute;inset:0;pointer-events:none}
+.banner-content{position:relative;z-index:2;padding:36px 24px 28px}
+.banner-eyebrow{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--lavender-light);margin-bottom:10px;font-weight:500}
+.banner-title{font-family:'Playfair Display',serif;font-size:clamp(28px,6vw,52px);font-weight:900;line-height:1.1;letter-spacing:-0.5px;color:#fff}
+.banner-title span{color:var(--lavender-light)}
+.banner-sub{margin-top:14px;font-size:13px;color:rgba(255,255,255,0.75);line-height:1.8}
+.banner-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.pill{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);border-radius:20px;padding:5px 14px;font-size:11.5px;color:rgba(255,255,255,0.9);letter-spacing:0.5px}
+.pill.red{background:var(--red);border-color:var(--red)}
+.banner-mountain{position:absolute;bottom:0;left:0;right:0;pointer-events:none}
+
+.tabs-wrapper{background:var(--navy);position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,0.3)}
+.tabs{display:flex;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;padding:0 8px}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;padding:14px 16px;font-size:12.5px;color:rgba(255,255,255,0.55);font-weight:500;cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap;transition:all 0.2s;letter-spacing:0.3px;font-family:'Noto Sans TC',sans-serif;background:none;border-top:none;border-left:none;border-right:none}
+.tab:hover{color:rgba(255,255,255,0.85)}
+.tab.active{color:#fff;border-bottom-color:var(--lavender-light)}
+
+.main{max-width:860px;margin:0 auto;padding:24px 16px 60px}
+
+.overview-hero{background:linear-gradient(135deg,var(--lavender) 0%,var(--navy) 100%);border-radius:16px;padding:28px;color:#fff;margin-bottom:24px}
+.overview-hero h2{font-family:'Playfair Display',serif;font-size:22px;margin-bottom:6px}
+.overview-hero p{font-size:13px;opacity:0.85;line-height:1.7}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
+.info-card{background:#fff;border-radius:12px;padding:18px;box-shadow:var(--shadow)}
+.info-card h4{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--lavender);margin-bottom:8px;font-weight:600}
+.info-card p{font-size:13px;line-height:1.7;color:var(--text)}
+.info-card.full{grid-column:1/-1}
+.flight-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);font-size:13px}
+.flight-row:last-child{border:none;padding-bottom:0}
+.flight-badge{background:var(--red);color:#fff;border-radius:6px;padding:3px 8px;font-size:11px;font-weight:700;flex-shrink:0}
+.hotel-card{background:#fff;border-radius:12px;padding:20px;box-shadow:var(--shadow);margin-bottom:24px}
+.hotel-card h3{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:4px}
+.hotel-card .addr{font-size:12px;color:var(--text-light);margin-bottom:14px}
+.hotel-row{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px dashed var(--border);font-size:13px}
+.hotel-row:last-child{border:none}
+.hotel-row span:first-child{color:var(--text-light)}
+.hotel-row span:last-child{font-weight:500;color:var(--navy)}
+.table-wrap{background:#fff;border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}
+.ov-table{width:100%;border-collapse:collapse;font-size:12.5px}
+.ov-table th{background:var(--navy);color:#fff;padding:12px 14px;text-align:left;font-weight:600;font-size:12px;letter-spacing:0.5px}
+.ov-table td{padding:11px 14px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.6}
+.ov-table tr:last-child td{border:none}
+.ov-table tr:nth-child(even) td{background:#faf9f7}
+.day-badge{display:inline-block;background:var(--lavender);color:#fff;border-radius:6px;padding:2px 9px;font-size:11px;font-weight:700;white-space:nowrap}
+.tips-card{background:#fff;border-radius:12px;padding:20px;box-shadow:var(--shadow);margin-top:24px}
+.tips-card h3{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:6px}
+.tip-item{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px dashed var(--border);font-size:13px;line-height:1.6}
+.tip-item:last-child{border:none}
+.tip-icon{flex-shrink:0;font-size:15px;margin-top:1px}
+
+.day-header{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%);border-radius:16px;padding:24px;color:#fff;margin-bottom:28px;position:relative;overflow:hidden}
+.day-header::after{content:'';position:absolute;right:-20px;top:-20px;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,0.05)}
+.day-num{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--lavender-light);margin-bottom:6px;font-weight:500}
+.day-title{font-family:'Playfair Display',serif;font-size:26px;font-weight:900;line-height:1.1}
+.day-city-pill{display:inline-block;background:var(--red);border-radius:20px;padding:5px 16px;font-size:12px;margin-top:12px;font-weight:500}
+
+.timeline{position:relative;padding-left:32px}
+.timeline::before{content:'';position:absolute;left:10px;top:8px;bottom:8px;width:2px;background:linear-gradient(to bottom,var(--lavender),var(--navy));border-radius:2px}
+.stop{position:relative;margin-bottom:12px}
+.stop-dot{position:absolute;left:-22px;top:16px;width:18px;height:18px;border-radius:50%;background:#fff;border:3px solid var(--lavender);display:flex;align-items:center;justify-content:center;font-size:8px;z-index:1;transition:border-color 0.2s}
+.stop.transport .stop-dot{border-color:var(--navy);background:var(--navy)}
+.stop.transport .stop-dot::after{content:'';display:block;width:6px;height:6px;border-radius:50%;background:#fff}
+.stop-card{background:#fff;border-radius:12px;box-shadow:var(--shadow);overflow:hidden;cursor:pointer;transition:box-shadow 0.2s,transform 0.15s}
+.stop-card:hover{box-shadow:0 4px 24px rgba(26,39,68,0.14);transform:translateY(-1px)}
+.stop-card.transport-card{background:var(--navy);cursor:default;transform:none}
+.stop-card.transport-card:hover{transform:none;box-shadow:var(--shadow)}
+.stop-head{display:flex;align-items:center;gap:12px;padding:14px 16px}
+.stop-icon{font-size:20px;flex-shrink:0;line-height:1}
+.stop-info{flex:1;min-width:0}
+.stop-label{font-size:10px;letter-spacing:1.2px;text-transform:uppercase;font-weight:600;margin-bottom:2px}
+.stop-name{font-size:14px;font-weight:700;line-height:1.3;color:var(--navy)}
+.transport-card .stop-name{color:#fff}
+.transport-card .stop-label{color:rgba(255,255,255,0.6)}
+.stop-arrow{font-size:12px;color:var(--lavender);transition:transform 0.25s;flex-shrink:0}
+.stop-card.open .stop-arrow{transform:rotate(180deg)}
+.stop-body{max-height:0;overflow:hidden;transition:max-height 0.35s cubic-bezier(0.4,0,0.2,1)}
+.stop-body.open{max-height:600px}
+.stop-body-inner{padding:0 16px 16px;border-top:1px solid var(--border)}
+.stop-body-inner p{font-size:13px;line-height:1.8;color:#444;margin-top:12px}
+.tag-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.tag{display:inline-block;border-radius:20px;padding:3px 12px;font-size:11px;font-weight:600}
+.tag.food{background:#fef3e2;color:#b7700a}
+.tag.sight{background:#e8f4fd;color:#1a6ea8}
+.tag.event{background:#fce8f3;color:#a0186e}
+.tag.transport{background:#e8edf7;color:#1a2744}
+.tag.hotel{background:#f0edfa;color:#5a3fa0}
+
+.section-title{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--lavender);font-weight:700;margin:28px 0 14px;display:flex;align-items:center;gap:8px}
+.section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+
+.view{display:none}.view.active{display:block}
+</style>
+</head>
+<body>
+
+<div class="banner">
+  <svg class="banner-bg" viewBox="0 0 800 220" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="650" cy="40" r="180" fill="rgba(124,111,160,0.12)"/>
+    <circle cx="750" cy="160" r="100" fill="rgba(255,255,255,0.04)"/>
+    <circle cx="80" cy="30" r="1.5" fill="rgba(255,255,255,0.4)"/>
+    <circle cx="200" cy="15" r="1" fill="rgba(255,255,255,0.3)"/>
+    <circle cx="350" cy="40" r="1.2" fill="rgba(255,255,255,0.35)"/>
+    <circle cx="500" cy="20" r="1" fill="rgba(255,255,255,0.3)"/>
+    <circle cx="620" cy="50" r="1.5" fill="rgba(255,255,255,0.25)"/>
+    <circle cx="720" cy="25" r="1" fill="rgba(255,255,255,0.4)"/>
+  </svg>
+  <svg class="banner-mountain" viewBox="0 0 800 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 80 L120 30 L220 55 L340 10 L420 45 L560 5 L680 40 L800 20 L800 80 Z" fill="rgba(255,255,255,0.04)"/>
+    <path d="M0 80 L80 50 L180 68 L300 38 L400 60 L520 28 L640 55 L760 35 L800 50 L800 80 Z" fill="rgba(255,255,255,0.06)"/>
+  </svg>
+  <div class="banner-content">
+    <div class="banner-eyebrow">✈ CHINA AIRLINES CI130 / CI131</div>
+    <div class="banner-title">日本<span>北海道</span><br/>8日遊</div>
+    <div class="banner-sub">2026年8月12日（三）— 8月19日（三）&nbsp;｜&nbsp;2大1青少年<br/>新千歲機場 → 札幌為基地，放射狀出遊</div>
+    <div class="banner-pills">
+      <div class="pill red">CI130 抵達 13:35</div>
+      <div class="pill">小樽 ∙ 旭川 ∙ 登別</div>
+      <div class="pill">7晚 Hotel ONE'S RESIDENCE</div>
+    </div>
+  </div>
+</div>
+
+<div class="tabs-wrapper">
+  <div class="tabs" id="tabs">
+    <button class="tab active" onclick="showView('overview',this)">行程總覽</button>
+    <button class="tab" onclick="showView('day1',this)">第1天｜新千歲・札幌</button>
+    <button class="tab" onclick="showView('day2',this)">第2天｜小樽</button>
+    <button class="tab" onclick="showView('day3',this)">第3天｜札幌南區</button>
+    <button class="tab" onclick="showView('day4',this)">第4天｜札幌外圍</button>
+    <button class="tab" onclick="showView('day5',this)">第5天｜札幌市中心</button>
+    <button class="tab" onclick="showView('day6',this)">第6天｜旭川</button>
+    <button class="tab" onclick="showView('day7',this)">第7天｜登別</button>
+    <button class="tab" onclick="showView('day8',this)">第8天｜返台</button>
+  </div>
+</div>
+
+<div class="main">
+
+<div class="view active" id="overview">
+  <div class="overview-hero">
+    <h2>🗾 北海道家庭旅遊</h2>
+    <p>以札幌為基地，每日放射狀出遊。8月北海道氣溫約20–27°C，恰逢薰衣草季末、啤酒花園旺季，全程7晚住同一飯店，省去搬行李的煩惱。</p>
+  </div>
+  <div class="info-grid">
+    <div class="info-card">
+      <h4>✈ 去程</h4>
+      <div class="flight-row"><span class="flight-badge">CI130</span><span>8/12（三）抵達新千歲 13:35</span></div>
+    </div>
+    <div class="info-card">
+      <h4>✈ 回程</h4>
+      <div class="flight-row"><span class="flight-badge">CI131</span><span>8/19（三）新千歲出發 15:05</span></div>
+    </div>
+    <div class="info-card full">
+      <h4>🏨 住宿</h4>
+      <div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:4px">Hotel ONE'S RESIDENCE</div>
+      <div style="font-size:12px;color:var(--text-light);margin-bottom:10px">中央區南8條西2丁目5-67（地鐵中島公園駅步行5分）</div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <span style="background:#f0edfa;color:#5a3fa0;border-radius:20px;padding:3px 12px;font-size:11px;font-weight:600">7晚</span>
+        <span style="background:#f0edfa;color:#5a3fa0;border-radius:20px;padding:3px 12px;font-size:11px;font-weight:600">€110/晚</span>
+        <span style="background:#e8f4fd;color:#1a6ea8;border-radius:20px;padding:3px 12px;font-size:11px;font-weight:600">小廚房・洗衣機</span>
+        <span style="background:#e8f4fd;color:#1a6ea8;border-radius:20px;padding:3px 12px;font-size:11px;font-weight:600">有電梯・冷氣</span>
+      </div>
+    </div>
+  </div>
+  <div class="section-title">8天行程一覽</div>
+  <div class="table-wrap">
+    <table class="ov-table">
+      <thead><tr><th>日期</th><th>地點</th><th>交通</th><th>亮點</th></tr></thead>
+      <tbody>
+        <tr><td><span class="day-badge">Day 1</span><br/>8/12（三）</td><td>新千歲→札幌</td><td>JR 45分</td><td>大通公園啤酒花園、成吉思汗烤羊肉</td></tr>
+        <tr><td><span class="day-badge">Day 2</span><br/>8/13（四）</td><td>小樽</td><td>JR 35分</td><td>小樽運河、LeTAO起司蛋糕、海鮮丼</td></tr>
+        <tr><td><span class="day-badge">Day 3</span><br/>8/14（五）</td><td>札幌南區</td><td>市電・地鐵</td><td>藻岩山夜景、北海道神宮、味噌拉麵</td></tr>
+        <tr><td><span class="day-badge">Day 4</span><br/>8/15（六）</td><td>札幌外圍</td><td>巴士・JR</td><td>羊ヶ丘展望台、ES CON FIELD 職棒</td></tr>
+        <tr><td><span class="day-badge">Day 5</span><br/>8/16（日）</td><td>札幌市中心</td><td>地鐵・步行</td><td>北大校園、赤煉瓦廳、薄野海鮮</td></tr>
+        <tr><td><span class="day-badge">Day 6</span><br/>8/17（一）</td><td>旭川</td><td>JR特急 90分</td><td>旭川拉麵、旭橋、買物公園</td></tr>
+        <tr><td><span class="day-badge">Day 7</span><br/>8/18（二）</td><td>登別</td><td>JR特急 70分</td><td>地獄谷、大湯沼、鬼煙火秀</td></tr>
+        <tr><td><span class="day-badge">Day 8</span><br/>8/19（三）</td><td>札幌→新千歲</td><td>JR 45分</td><td>機場拉麵道場、CI131 15:05返台</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="tips-card">
+    <h3>💡 旅遊重點提示</h3>
+    <div class="tip-item"><span class="tip-icon">🎫</span><div><strong>交通券：</strong>建議購買北海道鐵路周遊券（5日），涵蓋旭川、登別特急，三人使用非常划算</div></div>
+    <div class="tip-item"><span class="tip-icon">⚾</span><div><strong>職棒門票：</strong>8/15（六）ES CON FIELD 週六主場，建議儘早在 hpfc.co.jp 購票</div></div>
+    <div class="tip-item"><span class="tip-icon">🏮</span><div><strong>お盆旺季：</strong>8/13–16 日本盂蘭盆節，景點人潮大，熱門拉麵店建議開門前排隊</div></div>
+    <div class="tip-item"><span class="tip-icon">🌽</span><div><strong>當季食材：</strong>8月北海道玉米、馬鈴薯、哈密瓜正當季，超市或路邊攤必試</div></div>
+    <div class="tip-item"><span class="tip-icon">👕</span><div><strong>穿搭：</strong>氣溫20–27°C，早晚涼，白天可達30°C，洋蔥式穿搭最適合</div></div>
+  </div>
+</div>
+
+<div class="view" id="day1">
+  <div class="day-header">
+    <div class="day-num">DAY 01 · 8月12日（三）</div>
+    <div class="day-title">抵達新千歲<br/>初遊札幌</div>
+    <div class="day-city-pill">🛬 新千歲機場 → 札幌</div>
+  </div>
+  <div class="timeline" id="tl-day1"></div>
+</div>
+
+<div class="view" id="day2">
+  <div class="day-header">
+    <div class="day-num">DAY 02 · 8月13日（四）</div>
+    <div class="day-title">小樽<br/>運河・玻璃・甜點</div>
+    <div class="day-city-pill">🌊 小樽一日遊</div>
+  </div>
+  <div class="timeline" id="tl-day2"></div>
+</div>
+
+<div class="view" id="day3">
+  <div class="day-header">
+    <div class="day-num">DAY 03 · 8月14日（五）</div>
+    <div class="day-title">札幌南區<br/>藻岩山・神宮・夜景</div>
+    <div class="day-city-pill">🏔️ 札幌深度遊</div>
+  </div>
+  <div class="timeline" id="tl-day3"></div>
+</div>
+
+<div class="view" id="day4">
+  <div class="day-header">
+    <div class="day-num">DAY 04 · 8月15日（六）</div>
+    <div class="day-title">札幌外圍<br/>羊丘・職棒球場</div>
+    <div class="day-city-pill">⚾ 農業文化・職棒</div>
+  </div>
+  <div class="timeline" id="tl-day4"></div>
+</div>
+
+<div class="view" id="day5">
+  <div class="day-header">
+    <div class="day-num">DAY 05 · 8月16日（日）</div>
+    <div class="day-title">札幌市中心<br/>歷史・北大・夜遊</div>
+    <div class="day-city-pill">🏛️ 市中心歷史漫遊</div>
+  </div>
+  <div class="timeline" id="tl-day5"></div>
+</div>
+
+<div class="view" id="day6">
+  <div class="day-header">
+    <div class="day-num">DAY 06 · 8月17日（一）</div>
+    <div class="day-title">旭川<br/>拉麵・旭橋・商店街</div>
+    <div class="day-city-pill">🍜 旭川一日遊</div>
+  </div>
+  <div class="timeline" id="tl-day6"></div>
+</div>
+
+<div class="view" id="day7">
+  <div class="day-header">
+    <div class="day-num">DAY 07 · 8月18日（二）</div>
+    <div class="day-title">登別<br/>地獄谷・溫泉・鬼火</div>
+    <div class="day-city-pill">🌋 登別溫泉一日遊</div>
+  </div>
+  <div class="timeline" id="tl-day7"></div>
+</div>
+
+<div class="view" id="day8">
+  <div class="day-header">
+    <div class="day-num">DAY 08 · 8月19日（三）</div>
+    <div class="day-title">最後購物<br/>返回台灣</div>
+    <div class="day-city-pill">✈ 新千歲 CI131 15:05</div>
+  </div>
+  <div class="timeline" id="tl-day8"></div>
+</div>
+
+</div>
+
+<script>
+function showView(id, btn) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  btn.scrollIntoView({behavior:'smooth', block:'nearest', inline:'center'});
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function buildTimeline(containerId, stops) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  el.innerHTML = stops.map((s, i) => {
+    if (s.type === 'transport') {
+      return `<div class="stop transport">
+        <div class="stop-dot"></div>
+        <div class="stop-card transport-card">
+          <div class="stop-head">
+            <div class="stop-icon">${s.icon}</div>
+            <div class="stop-info">
+              <div class="stop-label" style="color:rgba(255,255,255,0.55)">${s.label}</div>
+              <div class="stop-name">${s.name}</div>
+            </div>
+          </div>
+        </div>
+      </div>`;
+    }
+    const id = `stop-${containerId}-${i}`;
+    const tags = (s.tags||[]).map(t=>`<span class="tag ${t.type}">${t.text}</span>`).join('');
+    return `<div class="stop">
+      <div class="stop-dot" style="font-size:9px;font-weight:700;color:var(--lavender)">${i+1}</div>
+      <div class="stop-card" id="${id}" onclick="toggleStop('${id}')">
+        <div class="stop-head">
+          <div class="stop-icon">${s.icon}</div>
+          <div class="stop-info">
+            <div class="stop-label" style="color:var(--lavender);font-size:10px;font-weight:600;letter-spacing:1px">${s.label}</div>
+            <div class="stop-name">${s.name}</div>
+          </div>
+          <div class="stop-arrow">▼</div>
+        </div>
+        <div class="stop-body" id="body-${id}">
+          <div class="stop-body-inner">
+            <div class="tag-row">${tags}</div>
+            <p>${s.desc}</p>
+          </div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function toggleStop(id) {
+  const card = document.getElementById(id);
+  const body = document.getElementById('body-' + id);
+  const open = card.classList.toggle('open');
+  body.classList.toggle('open', open);
+}
+
+const days = {
+  'tl-day1': [
+    {type:'transport', icon:'✈', label:'交通', name:'新千歲機場 → JR快速Airport（45分）→ JR札幌駅'},
+    {icon:'🛏️', label:'住宿 CHECK-IN', name:"Hotel ONE'S RESIDENCE", tags:[{type:'hotel',text:'公寓式飯店'},{type:'transport',text:'中島公園駅步行5分'}], desc:'搭地下鐵南北線至中島公園駅，步行約5分抵達飯店。放下行李稍作休息，再輕裝出發。飯店有小廚房、洗衣機，生活機能完整。'},
+    {icon:'🥩', label:'晚餐・必吃', name:'成吉思汗烤羊肉 だるま本店', tags:[{type:'food',text:'北海道名物'},{type:'food',text:'薄野'}], desc:'北海道最具代表性的烤肉！用特殊凸型鐵板烤羔羊肉，沾醬甘甜不羶。だるま本店是薄野最老牌名店，常年大排長龍，建議傍晚提早前往排隊。飯店步行約10分。'},
+    {icon:'🍺', label:'特殊活動', name:'大通公園啤酒花園', tags:[{type:'event',text:'8月限定'},{type:'event',text:'免費入場'}], desc:'約7月下旬～8月下旬舉辦，四大啤酒品牌（Sapporo、Asahi、Kirin、Suntory）各自設立露天攤位。青少年可喝飲料、吃北海道美食，夜晚燈光璀璨，人聲鼎沸。'},
+    {icon:'🗼', label:'景點', name:'大通公園 & 札幌電視塔', tags:[{type:'sight',text:'地標'},{type:'sight',text:'夜景'}], desc:'大通公園是市中心東西向的綠帶公園，長約1.5公里。公園東端的電視塔（高147.2公尺）展望台可俯瞰公園全景，夜景尤美。啤酒花園後順路散步。'},
+    {icon:'🏪', label:'景點・購物', name:'狸小路商店街', tags:[{type:'sight',text:'購物'},{type:'sight',text:'有屋頂・雨天OK'}], desc:'北海道最古老的商店街，全長約800公尺，有屋頂遮蔽，雨天也可逛。土産、藥妝、餐廳一應俱全，是回飯店路上的最佳順路購物地點。'},
+  ],
+  'tl-day2': [
+    {type:'transport', icon:'🚃', label:'交通', name:'JR 札幌駅 → JR函館本線快速（35分）→ JR 小樽駅｜建議08:00出發'},
+    {icon:'🐟', label:'早餐・必吃', name:'小樽三角市場 海鮮丼', tags:[{type:'food',text:'新鮮海鮮'},{type:'food',text:'JR小樽駅前1分'}], desc:'JR小樽駅出來即到。市場裡的食堂可自選新鮮海鮮組合成丼飯：海膽、鮭魚卵、甜蝦、螃蟹，新鮮度一流，是抵達小樽的第一站必吃。'},
+    {icon:'🛍️', label:'景點・購物', name:'堺町通り 商店街', tags:[{type:'sight',text:'購物'},{type:'sight',text:'伴手禮'}], desc:'小樽最熱鬧的購物街，玻璃工藝品、北海道牛奶甜點、音樂盒、海鮮等商家密集。從小樽駅步行約10分進入商店街，親子邊走邊吃邊買。'},
+    {icon:'🍰', label:'必吃・甜點', name:'LeTAO 本店', tags:[{type:'food',text:'雙層起司蛋糕'},{type:'food',text:'堺町通り'}], desc:'小樽最知名甜點品牌，雙層起司蛋糕（ドゥーブルフロマージュ）入口即化。本店在堺町通，二樓咖啡廳可欣賞街景，建議現場享用。'},
+    {icon:'🧁', label:'必吃・甜點', name:'北菓楼 kitakaro 本店', tags:[{type:'food',text:'現烤泡芙'},{type:'food',text:'年輪蛋糕'}], desc:'北海道著名菓子店，「夢不思議」泡芙、年輪蛋糕都是人氣商品。與LeTAO相距不遠，兩家連走，本店可享用現烤泡芙。'},
+    {icon:'🏮', label:'景點', name:'北一硝子 三號館', tags:[{type:'sight',text:'玻璃工藝'},{type:'sight',text:'DIY體驗'}], desc:'明治時代倉庫改建的玻璃工藝品店，內部有數百盞油燈燃燒，氣氛獨特而溫暖，也可體驗玻璃彩繪DIY。堺町通り末段，靠近小樽運河。'},
+    {icon:'🌊', label:'景點・壓軸', name:'小樽運河', tags:[{type:'sight',text:'地標'},{type:'sight',text:'傍晚點燈最美'}], desc:'建於1923年的磚造倉庫群與運河，是小樽最具代表性的景色。傍晚點燈後尤為浪漫，石板路沿途設有藝術品與咖啡廳。建議傍晚17:00前後在此拍照，再搭車返札。'},
+    {type:'transport', icon:'🚃', label:'交通', name:'JR 小樽駅 → JR 札幌駅（35分）→ 地下鐵 → 飯店｜建議17:00–18:00搭車'},
+  ],
+  'tl-day3': [
+    {type:'transport', icon:'🚇', label:'交通', name:'飯店 → 地下鐵東西線「円山公園駅」→ 步行15分 → 北海道神宮'},
+    {icon:'⛩️', label:'景點', name:'北海道神宮', tags:[{type:'sight',text:'祈福求籤'},{type:'sight',text:'圓山公園旁'}], desc:'札幌最重要的神社，位於圓山公園旁，綠蔭茂密。可祈福求籤，感受北海道神道氛圍。建議安排在上午前往，搭地下鐵東西線至円山公園駅步行約15分。'},
+    {type:'transport', icon:'🚇', label:'交通', name:'円山公園駅 → 地下鐵 → すすきの駅 → 市電「ロープウェイ入口駅」'},
+    {icon:'🍜', label:'午餐・必吃', name:'すみれ 札幌中山店 味噌拉麵', tags:[{type:'food',text:'札幌名物'},{type:'food',text:'お盆須排隊'}], desc:'札幌是日本味噌拉麵的發源地！すみれ是業界公認的頂級名店，濃厚味噌湯底、炒香蔬菜，無可取代。8月お盆期間極擁擠，建議開門前（11:00前）排隊。'},
+    {icon:'🏔️', label:'景點・壓軸', name:'藻岩山 夜景', tags:[{type:'sight',text:'日本新三大夜景'},{type:'sight',text:'纜車+迷你纜車'}], desc:'搭乘纜車＋迷你纜車雙層抵達標高531公尺山頂，日本新三大夜景之一。建議傍晚前往，日落後夜景震撼無比。市電「ロープウェイ入口駅」步行5分至山麓駅。'},
+    {icon:'🍶', label:'下午茶・必吃', name:'六花亭 大通公園本店', tags:[{type:'food',text:'奶油夾心餅乾'},{type:'food',text:'內用咖啡廳'}], desc:'北海道代表性菓子品牌，大通公園本店有可內用的咖啡廳。招牌マルセイバターサンド是必買伴手禮，下午茶時段順路前往。'},
+    {icon:'🌳', label:'景點', name:'中島公園 散步', tags:[{type:'sight',text:'飯店旁'},{type:'sight',text:'夏季音樂祭'}], desc:'市中心的大型公園，有小河、日本庭園、音樂廳等。8月有市民音樂祭、戶外活動，是傍晚回飯店前悠閒散步的好選擇。飯店步行可達。'},
+    {icon:'🌆', label:'晚餐', name:'薄野夜遊', tags:[{type:'sight',text:'北日本最大夜生活區'},{type:'food',text:'飯店步行10分'}], desc:'北日本最大的夜生活區，夜晚燈光璀璨，居酒屋、拉麵店、海鮮餐廳林立，很多餐廳全年齡皆可入座。'},
+  ],
+  'tl-day4': [
+    {type:'transport', icon:'🚌', label:'交通', name:'飯店 → 地下鐵東豊線「福住駅」→ 巴士 → 羊ヶ丘展望台'},
+    {icon:'🐑', label:'景點', name:'羊ヶ丘展望台', tags:[{type:'sight',text:'克拉克博士銅像'},{type:'sight',text:'薰衣草'}], desc:"著名的克拉克博士「Boys, Be Ambitious!」銅像所在地。眺望廣闊的牧羊草原與遠山，是札幌的經典打卡點，夏天開滿薰衣草。"},
+    {icon:'🍦', label:'必吃', name:'北海道牛奶霜淇淋', tags:[{type:'food',text:'展望台內賣店'}], desc:'使用北海道純正牛乳製成，濃郁奶香比一般霜淇淋更扎實綿密。羊ヶ丘展望台賣店即有販售，打卡後立刻吃最對味！'},
+    {icon:'🥩', label:'午餐・必吃', name:'HITSUJIGAOKA BBQ 露天烤肉', tags:[{type:'food',text:'羊肉・北海道蔬菜'},{type:'food',text:'展望台旁'}], desc:'可在展望台旁享受露天烤肉，使用北海道產蔬菜與羊肉，俯瞰美景同時品嚐戶外烤肉，是8月夏日旅行難得的體驗。'},
+    {type:'transport', icon:'🚌', label:'交通', name:'羊ヶ丘 → 巴士/計程車 → JR 北広島駅 → 步行10分 → ES CON FIELD'},
+    {icon:'⚾', label:'景點', name:'ES CON FIELD HOKKAIDO', tags:[{type:'sight',text:'2023年新球場'},{type:'sight',text:'可開合屋頂'}], desc:'北海道日本火腿鬥士隊的新主場，屋頂可開合，設計前衛，場內有各式北海道美食攤位，即便不看球賽也值得逛逛。'},
+    {icon:'🎉', label:'特殊活動', name:'NPB 職棒主場比賽', tags:[{type:'event',text:'需預購票'},{type:'event',text:'8/15週六主場'}], desc:'8月是日本職棒NPB熱季，週六主場比賽通常13:00或18:00開打。即便不熟悉棒球也能樂在其中，球場氣氛超棒！建議提前於官網 hpfc.co.jp 購票。'},
+    {type:'transport', icon:'🚃', label:'交通', name:'JR 北広島駅 → JR 札幌駅（15分）→ 地下鐵 → 飯店'},
+  ],
+  'tl-day5': [
+    {type:'transport', icon:'🚇', label:'交通', name:'飯店 → 地下鐵南北線「大通駅」（1站）'},
+    {icon:'🕰️', label:'景點', name:'札幌市時計台', tags:[{type:'sight',text:'1878年建造'},{type:'sight',text:'大通駅步行5分'}], desc:'1878年建造的農學校演武場，北海道開拓時代的象徵。雖被戲稱「日本三大失望景點之一」，但歷史意義深遠，周邊高樓包圍反而形成奇特趣味對比，值得順路一看。'},
+    {icon:'🧱', label:'景點', name:'北海道廳舊本廳舍（赤煉瓦）', tags:[{type:'sight',text:'免費入場'},{type:'sight',text:'時計台步行3分'}], desc:'建於1888年的紅磚廳舍，國家重要文化財。內部可免費參觀北海道歷史展，庭院也開放入場，是札幌最上鏡的歷史建築。'},
+    {icon:'🎉', label:'特殊活動', name:'さっぽろ夏まつり 大通公園', tags:[{type:'event',text:'整個8月'},{type:'event',text:'免費'}], desc:'大通公園整個8月都有各種慶典活動，啤酒花園、食物攤位，熱鬧非凡。赤煉瓦旁即可進入，路過必定順道逛逛。'},
+    {type:'transport', icon:'🚇', label:'交通', name:'大通駅 → さっぽろ駅（1站）→ 步行5分 → 北海道大學正門'},
+    {icon:'🌲', label:'景點', name:'北海道大學 校園散步', tags:[{type:'sight',text:'免費入場'},{type:'sight',text:'177公頃綠地'}], desc:'明治時代開設的百年名校，校園完全對外開放免費入場。銀杏大道、克拉克像、農學部附屬農場適合悠閒散步，是城市中難得的大片綠地。'},
+    {icon:'🦀', label:'午餐・必吃', name:'二条市場 海鮮', tags:[{type:'food',text:'活海膽'},{type:'food',text:'活螃蟹'}], desc:'距大通公園步行約5分的傳統市場，市場內食堂可吃到活海膽、活螃蟹蒸煮料理，海鮮新鮮、價格相對親民。'},
+    {icon:'🍣', label:'晚餐・必吃', name:'薄野 海鮮居酒屋', tags:[{type:'food',text:'磯魚 北のグルメ亭'},{type:'food',text:'魚一心'}], desc:'薄野一帶有眾多平價海鮮居酒屋，推薦「磯魚 北のグルメ亭」或「魚一心」，新鮮螃蟹、海膽、干貝，價格實惠。青少年可點特製餐點。飯店步行10分。'},
+  ],
+  'tl-day6': [
+    {type:'transport', icon:'🚃', label:'交通', name:'JR 札幌駅 → JR特急「カムイ/ライラック」（90分）→ JR 旭川駅｜建議08:00出發'},
+    {icon:'🛍️', label:'景點・購物', name:'買物公園 旭川步行商店街', tags:[{type:'sight',text:'日本第一步行天國'},{type:'sight',text:'旭川駅出站即進入'}], desc:'日本第一條步行者天國商店街（1972年開設），從旭川駅向南延伸。咖啡廳、拉麵店、地方名産商店林立，是從車站步行至旭橋的最佳路線。'},
+    {icon:'🌉', label:'景點', name:'旭川市旭橋', tags:[{type:'sight',text:'1932年建造'},{type:'sight',text:'石狩川上'}], desc:'建於1932年的優美拱橋，是旭川的象徵。早晨或黃昏步行此橋景色迷人，是旭川最佳拍照地之一。買物公園南端步行約15分。'},
+    {icon:'🍜', label:'午餐・必吃', name:'旭川拉麵 青葉本店 / 旭川ラーメン村', tags:[{type:'food',text:'醬油豚骨海鮮湯底'},{type:'food',text:'北海道三大拉麵'}], desc:'旭川與札幌（味噌）、函館（鹽味）並稱北海道三大拉麵，以「醬油豚骨海鮮雙湯底」為特色，麵條偏細、油脂厚重不膩。推薦「青葉本店」，或前往「旭川ラーメン村」可比較8家名店風味。'},
+    {icon:'🍺', label:'下午・必吃', name:'旭川啤酒工廠餐廳', tags:[{type:'food',text:'現釀地方啤酒'},{type:'food',text:'北海道和牛'}], desc:'可品嚐現釀的旭川地方啤酒搭配北海道和牛料理，成人必訪。青少年可飲無酒精特調飲料，市區搭計程車約10分。'},
+    {type:'transport', icon:'🚃', label:'交通', name:'JR 旭川駅 → JR特急（90分）→ JR 札幌駅 → 飯店｜建議17:00–18:00搭車'},
+  ],
+  'tl-day7': [
+    {type:'transport', icon:'🚃', label:'交通', name:'JR 札幌駅 → JR特急「すずらん/北斗」（70分）→ JR 登別駅 → 道南巴士（13分）→ 登別温泉'},
+    {icon:'👺', label:'景點・活動', name:'鬼の銅像 & 閻魔堂審判表演', tags:[{type:'sight',text:'溫泉街地標'},{type:'event',text:'免費表演'}], desc:'登別溫泉街的地標，閻羅王銅像與地獄主題裝飾遍佈街道。閻魔堂每日特定時段有機關表演，閻王大張其嘴、眼睛發光，老少咸宜。'},
+    {icon:'🌋', label:'景點・壓軸', name:'地獄谷（じごくだに）', tags:[{type:'sight',text:'免費入場'},{type:'sight',text:'直徑450公尺火口'}], desc:'登別最具代表性的奇觀，直徑約450公尺的爆裂火口遺跡，地面裂縫不斷噴出硫磺煙霧與沸騰泉水，如同地獄場景。步道環繞，免費入場，視覺衝擊感十足！'},
+    {icon:'💨', label:'景點', name:'大湯沼（おおゆぬま）', tags:[{type:'sight',text:'水溫約50°C'},{type:'sight',text:'地獄谷步行10分'}], desc:'直徑約130公尺的硫磺泉沼，水溫高達約50°C，沼面不停冒泡，從展望台俯瞰壯觀異常。步行棧道可近距離感受地熱，硫磺煙霧飄渺，宛如異世界。'},
+    {icon:'🦶', label:'體驗', name:'無料足湯', tags:[{type:'event',text:'免費'},{type:'sight',text:'夢元さぎり湯旁'}], desc:'溫泉街上有多處免費足湯，沿路悠閒泡腳，感受溫泉鄉氣氛。邊泡足湯邊欣賞溫泉街景色，是孩子和大人都喜歡的放鬆時刻。'},
+    {icon:'🍡', label:'必吃', name:'溫泉饅頭（温泉まんじゅう）', tags:[{type:'food',text:'現蒸約100日圓/個'},{type:'food',text:'溫泉街各店'}], desc:'登別溫泉必吃甜點，用溫泉水蒸製的黑色外皮饅頭，餡料香甜。溫泉街上多家販售，現蒸現吃，邊泡足湯邊吃最對味！'},
+    {icon:'🦀', label:'晚餐・必吃', name:'登別螃蟹料理', tags:[{type:'food',text:'松葉蟹・毛蟹'},{type:'food',text:'溫泉街餐廳'}], desc:'北海道知名螃蟹（松葉蟹、毛蟹）在登別溫泉街附近的海鮮餐廳可享用。若預算允許，點螃蟹定食作為旅程最後一頓豐盛晚餐。'},
+    {icon:'🎆', label:'特殊活動・壓軸', name:'地獄の谷の鬼花火 煙火秀', tags:[{type:'event',text:'免費'},{type:'event',text:'約20:00 & 21:00'}], desc:'每晚在登別温泉街舉行小型「鬼的煙火祭」表演，免費觀賞，8月份每晚皆有，約20:00、21:00各一場。晚餐後在街上等待即可欣賞，是完美的旅程句點！'},
+    {type:'transport', icon:'🚌', label:'交通', name:'温泉バスターミナル → JR 登別駅 → JR特急（70分）→ 札幌｜看完煙火約21:30搭巴士'},
+  ],
+  'tl-day8': [
+    {icon:'🏨', label:'退房', name:"Hotel ONE'S RESIDENCE 退房", tags:[{type:'hotel',text:'最晚11:30離開市區'}], desc:'CI131出發時間15:05，建議12:30前抵達新千歲機場。退房後行李可在大廳寄放，或直接帶往JR札幌駅寄存後再購物。最晚11:30–11:45搭上JR。'},
+    {icon:'🛍️', label:'購物', name:'JR タワーステラプレイス & 札幌駅地下街', tags:[{type:'sight',text:'JR札幌駅直結'},{type:'sight',text:'B1-B2食品區'}], desc:'JR札幌站地下連結多個大型商場，做最後的伴手禮採購。B1-B2食品區有白色戀人、六花亭、Royce巧克力等知名品牌，一次搞定所有土産。'},
+    {type:'transport', icon:'🚃', label:'交通', name:'JR 札幌駅 → JR快速Airport（45分）→ 新千歲機場｜最晚11:45出發'},
+    {icon:'🍜', label:'午餐・必吃', name:'新千歲空港 拉麵道場', tags:[{type:'food',text:'機場3F'},{type:'food',text:'10家名店'}], desc:'機場3F集結北海道各地10家知名拉麵，味噌、醬油、鹽味、海鮮全都有，是離開北海道前最後一碗麵的最佳選擇。各家排隊人潮多，建議抵達機場後立刻前往。'},
+    {icon:'🍫', label:'購物・必買', name:'新千歲機場免稅區 & 白色戀人旗艦店', tags:[{type:'food',text:'白色戀人'},{type:'food',text:'北海道牛奶霜淇淋'}], desc:'機場內購物區極豐富，有白色戀人工廠旗艦店（可現場品嚐）、北海道牛奶霜淇淋、各式土産。建議預留1.5–2小時在機場盡情採購最後的伴手禮。'},
+    {icon:'✈️', label:'出發', name:'華航 CI131 新千歲 15:05 → 台灣', tags:[{type:'transport',text:'建議13:30前完成報到'}], desc:'建議13:30前完成報到手續與通關，前往登機門。帶著滿滿的北海道回憶與行李箱的土産，期待再訪！'},
+  ],
+};
+
+Object.keys(days).forEach(id => buildTimeline(id, days[id]));
+</script>
+</body>
+</html>
