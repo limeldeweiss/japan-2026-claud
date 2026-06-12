@@ -10,118 +10,194 @@
 :root{
   --navy:#1a2744;
   --navy-light:#243259;
-  --lavender:#7c6fa0;
-  --lavender-light:#a99cc8;
+  --navy-mid:#1e3060;
+  --navy-accent:#2d4a8a;
+  --gold:#c8a84b;
+  --gold-light:#e8d5a0;
   --red:#c0392b;
-  --cream:#f8f6f2;
-  --warm-white:#fffef9;
-  --text:#2c2c2c;
-  --text-light:#666;
-  --border:#e0ddd8;
+  --cream:#f5f7fa;
+  --white:#ffffff;
+  --text:#1e2733;
+  --text-light:#5a6478;
+  --border:#d8dfe8;
   --shadow:0 2px 16px rgba(26,39,68,0.10);
 }
 html,body{width:100%;overflow-x:hidden;background:var(--cream);color:var(--text);font-family:'Noto Sans TC',sans-serif}
 
-.banner{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 50%,#2d4a8a 100%);color:#fff;position:relative;overflow:hidden;padding:0}
+/* ── BANNER ── */
+.banner{background:linear-gradient(150deg,#0d1b38 0%,var(--navy) 45%,var(--navy-accent) 100%);color:#fff;position:relative;overflow:hidden;padding:0}
 .banner-bg{position:absolute;inset:0;pointer-events:none}
-.banner-content{position:relative;z-index:2;padding:36px 24px 28px}
-.banner-eyebrow{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--lavender-light);margin-bottom:10px;font-weight:500}
-.banner-title{font-family:'Playfair Display',serif;font-size:clamp(28px,6vw,52px);font-weight:900;line-height:1.1;letter-spacing:-0.5px;color:#fff}
-.banner-title span{color:var(--lavender-light)}
-.banner-sub{margin-top:14px;font-size:13px;color:rgba(255,255,255,0.75);line-height:1.8}
+.banner-content{position:relative;z-index:2;padding:38px 24px 30px}
+.banner-eyebrow{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold-light);margin-bottom:10px;font-weight:500}
+.banner-title{font-family:'Playfair Display',serif;font-size:clamp(30px,6vw,54px);font-weight:900;line-height:1.1;letter-spacing:-0.5px;color:#fff}
+.banner-title span{color:var(--gold-light)}
+.banner-sub{margin-top:14px;font-size:14px;color:rgba(255,255,255,0.78);line-height:1.85}
 .banner-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
-.pill{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);border-radius:20px;padding:5px 14px;font-size:11.5px;color:rgba(255,255,255,0.9);letter-spacing:0.5px}
+.pill{background:rgba(255,255,255,0.10);border:1px solid rgba(255,255,255,0.22);border-radius:20px;padding:5px 14px;font-size:12px;color:rgba(255,255,255,0.9);letter-spacing:0.3px}
 .pill.red{background:var(--red);border-color:var(--red)}
 .banner-mountain{position:absolute;bottom:0;left:0;right:0;pointer-events:none}
 
-.tabs-wrapper{background:var(--navy);position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,0.3)}
-.tabs{display:flex;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;padding:0 8px}
-.tabs::-webkit-scrollbar{display:none}
-.tab{flex:0 0 auto;padding:14px 16px;font-size:12.5px;color:rgba(255,255,255,0.55);font-weight:500;cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap;transition:all 0.2s;letter-spacing:0.3px;font-family:'Noto Sans TC',sans-serif;background:none;border-top:none;border-left:none;border-right:none}
+/* ── NAV TABS ── */
+.tabs-wrapper{background:var(--navy);position:sticky;top:0;z-index:100;box-shadow:0 3px 10px rgba(0,0,0,0.35)}
+.tabs{
+  display:flex;
+  flex-wrap:nowrap;
+  overflow:hidden;          /* 不滑動、不折行，直接等寬塞滿 */
+  padding:4px 4px 0;
+  gap:1px;
+}
+.tab{
+  flex:1 1 0;               /* 9個tab等寬塞滿100% */
+  min-width:0;
+  padding:7px 2px 9px;
+  font-size:11px;
+  color:rgba(255,255,255,0.5);
+  font-weight:500;
+  cursor:pointer;
+  border-bottom:3px solid transparent;
+  border-top:none;border-left:none;border-right:none;
+  transition:all 0.2s;
+  font-family:'Noto Sans TC',sans-serif;
+  background:none;
+  text-align:center;
+  line-height:1.25;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:1px;
+  overflow:hidden;
+}
 .tab:hover{color:rgba(255,255,255,0.85)}
-.tab.active{color:#fff;border-bottom-color:var(--lavender-light)}
+.tab.active{color:#fff;border-bottom-color:var(--gold);background:rgba(255,255,255,0.06);border-radius:6px 6px 0 0}
+.tab-day{font-size:10px;font-weight:700;letter-spacing:0.5px;opacity:0.7;text-transform:uppercase}
+.tab.active .tab-day{opacity:1;color:var(--gold-light)}
+.tab-city{font-size:13px;font-weight:600;white-space:nowrap}
 
+/* ── MAIN ── */
 .main{max-width:860px;margin:0 auto;padding:24px 16px 60px}
 
-.overview-hero{background:linear-gradient(135deg,var(--lavender) 0%,var(--navy) 100%);border-radius:16px;padding:28px;color:#fff;margin-bottom:24px}
-.overview-hero h2{font-family:'Playfair Display',serif;font-size:22px;margin-bottom:6px}
-.overview-hero p{font-size:13px;opacity:0.85;line-height:1.7}
+/* ── OVERVIEW HERO ── */
+.overview-hero{background:linear-gradient(150deg,#0d1b38 0%,var(--navy) 60%,var(--navy-accent) 100%);border-radius:16px;padding:28px;color:#fff;margin-bottom:24px}
+.overview-hero h2{font-family:'Playfair Display',serif;font-size:23px;margin-bottom:7px}
+.overview-hero p{font-size:15px;opacity:0.85;line-height:1.75}
+
+/* ── INFO GRID ── */
 .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
-.info-card{background:#fff;border-radius:12px;padding:18px;box-shadow:var(--shadow)}
-.info-card h4{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--lavender);margin-bottom:8px;font-weight:600}
-.info-card p{font-size:13px;line-height:1.7;color:var(--text)}
+.info-card{background:var(--white);border-radius:12px;padding:18px;box-shadow:var(--shadow)}
+.info-card h4{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--navy);margin-bottom:8px;font-weight:700;opacity:0.65}
+.info-card p{font-size:14px;line-height:1.75;color:var(--text)}
 .info-card.full{grid-column:1/-1}
-.flight-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);font-size:13px}
+.flight-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);font-size:14px}
 .flight-row:last-child{border:none;padding-bottom:0}
-.flight-badge{background:var(--red);color:#fff;border-radius:6px;padding:3px 8px;font-size:11px;font-weight:700;flex-shrink:0}
-.hotel-card{background:#fff;border-radius:12px;padding:20px;box-shadow:var(--shadow);margin-bottom:24px}
-.hotel-card h3{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:4px}
-.hotel-card .addr{font-size:12px;color:var(--text-light);margin-bottom:14px}
-.hotel-row{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px dashed var(--border);font-size:13px}
-.hotel-row:last-child{border:none}
-.hotel-row span:first-child{color:var(--text-light)}
-.hotel-row span:last-child{font-weight:500;color:var(--navy)}
-.table-wrap{background:#fff;border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}
-.ov-table{width:100%;border-collapse:collapse;font-size:12.5px}
-.ov-table th{background:var(--navy);color:#fff;padding:12px 14px;text-align:left;font-weight:600;font-size:12px;letter-spacing:0.5px}
-.ov-table td{padding:11px 14px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.6}
+.flight-badge{background:var(--red);color:#fff;border-radius:6px;padding:3px 9px;font-size:11.5px;font-weight:700;flex-shrink:0}
+
+/* ── TABLE ── */
+.table-wrap{background:var(--white);border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}
+.ov-table{width:100%;border-collapse:collapse;font-size:13.5px}
+.ov-table th{background:var(--navy);color:#fff;padding:12px 14px;text-align:left;font-weight:600;font-size:12.5px;letter-spacing:0.5px}
+.ov-table td{padding:12px 14px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.65}
 .ov-table tr:last-child td{border:none}
-.ov-table tr:nth-child(even) td{background:#faf9f7}
-.day-badge{display:inline-block;background:var(--lavender);color:#fff;border-radius:6px;padding:2px 9px;font-size:11px;font-weight:700;white-space:nowrap}
-.tips-card{background:#fff;border-radius:12px;padding:20px;box-shadow:var(--shadow);margin-top:24px}
-.tips-card h3{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:6px}
-.tip-item{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px dashed var(--border);font-size:13px;line-height:1.6}
+.ov-table tr:nth-child(even) td{background:#f5f7fa}
+.day-badge{display:inline-block;background:var(--navy);color:#fff;border-radius:6px;padding:2px 9px;font-size:11.5px;font-weight:700;white-space:nowrap}
+
+/* ── TIPS ── */
+.tips-card{background:var(--white);border-radius:12px;padding:20px;box-shadow:var(--shadow);margin-top:24px}
+.tips-card h3{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:6px}
+.tip-item{display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px dashed var(--border);font-size:14px;line-height:1.7}
 .tip-item:last-child{border:none}
-.tip-icon{flex-shrink:0;font-size:15px;margin-top:1px}
+.tip-icon{flex-shrink:0;font-size:16px;margin-top:1px}
 
-.day-header{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%);border-radius:16px;padding:24px;color:#fff;margin-bottom:28px;position:relative;overflow:hidden}
-.day-header::after{content:'';position:absolute;right:-20px;top:-20px;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,0.05)}
-.day-num{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--lavender-light);margin-bottom:6px;font-weight:500}
-.day-title{font-family:'Playfair Display',serif;font-size:26px;font-weight:900;line-height:1.1}
-.day-city-pill{display:inline-block;background:var(--red);border-radius:20px;padding:5px 16px;font-size:12px;margin-top:12px;font-weight:500}
+/* ── DAY HEADER ── */
+.day-header{background:linear-gradient(150deg,#0d1b38 0%,var(--navy) 60%,var(--navy-accent) 100%);border-radius:16px;padding:26px;color:#fff;margin-bottom:28px;position:relative;overflow:hidden}
+.day-header::after{content:'';position:absolute;right:-20px;top:-20px;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,0.04)}
+.day-num{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold-light);margin-bottom:6px;font-weight:600}
+.day-title{font-family:'Playfair Display',serif;font-size:27px;font-weight:900;line-height:1.1}
+.day-city-pill{display:inline-block;background:var(--red);border-radius:20px;padding:5px 16px;font-size:13px;margin-top:12px;font-weight:500}
 
-.timeline{position:relative;padding-left:32px}
-.timeline::before{content:'';position:absolute;left:10px;top:8px;bottom:8px;width:2px;background:linear-gradient(to bottom,var(--lavender),var(--navy));border-radius:2px}
-.stop{position:relative;margin-bottom:12px}
-.stop-dot{position:absolute;left:-22px;top:16px;width:18px;height:18px;border-radius:50%;background:#fff;border:3px solid var(--lavender);display:flex;align-items:center;justify-content:center;font-size:8px;z-index:1;transition:border-color 0.2s}
-.stop.transport .stop-dot{border-color:var(--navy);background:var(--navy)}
-.stop.transport .stop-dot::after{content:'';display:block;width:6px;height:6px;border-radius:50%;background:#fff}
-.stop-card{background:#fff;border-radius:12px;box-shadow:var(--shadow);overflow:hidden;cursor:pointer;transition:box-shadow 0.2s,transform 0.15s}
+/* ── TIMELINE ── */
+.timeline{display:flex;flex-direction:column;gap:10px;position:relative;padding-left:0}
+.timeline::before{
+  content:'';position:absolute;
+  left:10px;
+  top:0;bottom:0;
+  width:2px;
+  background:linear-gradient(to bottom,var(--navy-accent),var(--navy));
+  border-radius:2px;opacity:0.4;
+  z-index:0;
+}
+.stop{
+  display:grid;
+  grid-template-columns:22px 1fr;
+  align-items:start;
+  gap:10px;
+  position:relative;
+  z-index:1;
+}
+.stop-dot{
+  width:22px;height:22px;border-radius:50%;
+  background:var(--navy);
+  color:#fff;
+  border:none;
+  display:flex;align-items:center;justify-content:center;
+  font-size:10px;font-weight:700;
+  flex-shrink:0;
+  margin-top:12px;
+  z-index:2;
+}
+.stop.transport .stop-dot{
+  background:var(--navy-accent);
+  width:14px;height:14px;margin-top:17px;margin-left:4px;
+}
+.stop.transport .stop-dot::after{display:none}
+.stop-card{background:var(--white);border-radius:12px;box-shadow:var(--shadow);overflow:hidden;cursor:pointer;transition:box-shadow 0.2s,transform 0.15s}
 .stop-card:hover{box-shadow:0 4px 24px rgba(26,39,68,0.14);transform:translateY(-1px)}
 .stop-card.transport-card{background:var(--navy);cursor:default;transform:none}
 .stop-card.transport-card:hover{transform:none;box-shadow:var(--shadow)}
-.stop-head{display:flex;align-items:center;gap:12px;padding:14px 16px}
-.stop-icon{font-size:20px;flex-shrink:0;line-height:1}
+.stop-head{display:flex;align-items:center;gap:12px;padding:15px 16px}
+.stop-icon{font-size:21px;flex-shrink:0;line-height:1}
 .stop-info{flex:1;min-width:0}
-.stop-label{font-size:10px;letter-spacing:1.2px;text-transform:uppercase;font-weight:600;margin-bottom:2px}
-.stop-name{font-size:14px;font-weight:700;line-height:1.3;color:var(--navy)}
-.transport-card .stop-name{color:#fff}
-.transport-card .stop-label{color:rgba(255,255,255,0.6)}
-.stop-arrow{font-size:12px;color:var(--lavender);transition:transform 0.25s;flex-shrink:0}
-.stop-card.open .stop-arrow{transform:rotate(180deg)}
+.stop-label{font-size:10.5px;letter-spacing:1px;text-transform:uppercase;font-weight:700;margin-bottom:3px;color:var(--navy);opacity:0.55}
+.stop-name{font-size:15px;font-weight:700;line-height:1.3;color:var(--navy)}
+.transport-card .stop-name{color:#fff;font-size:14px}
+.transport-card .stop-label{color:rgba(255,255,255,0.55)}
+.stop-arrow{font-size:12px;color:var(--navy);opacity:0.4;transition:transform 0.25s;flex-shrink:0}
+.stop-card.open .stop-arrow{transform:rotate(180deg);opacity:0.7}
 .stop-body{max-height:0;overflow:hidden;transition:max-height 0.35s cubic-bezier(0.4,0,0.2,1)}
 .stop-body.open{max-height:600px}
 .stop-body-inner{padding:0 16px 16px;border-top:1px solid var(--border)}
-.stop-body-inner p{font-size:13px;line-height:1.8;color:#444;margin-top:12px}
+.stop-body-inner p{font-size:14.5px;line-height:1.85;color:#374151;margin-top:12px}
 .tag-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
-.tag{display:inline-block;border-radius:20px;padding:3px 12px;font-size:11px;font-weight:600}
-.tag.food{background:#fef3e2;color:#b7700a}
-.tag.sight{background:#e8f4fd;color:#1a6ea8}
-.tag.event{background:#fce8f3;color:#a0186e}
-.tag.transport{background:#e8edf7;color:#1a2744}
-.tag.hotel{background:#f0edfa;color:#5a3fa0}
+.tag{display:inline-block;border-radius:20px;padding:3px 12px;font-size:12px;font-weight:600}
+.tag.food{background:#fef3e2;color:#92580a}
+.tag.sight{background:#e8f0fc;color:#1a4ea8}
+.tag.event{background:#fce8f3;color:#8f166e}
+.tag.transport{background:#e6ecf5;color:#1a2744}
+.tag.hotel{background:#e6ecf5;color:#1a2744}
 
-.section-title{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--lavender);font-weight:700;margin:28px 0 14px;display:flex;align-items:center;gap:8px}
+/* ── SECTION TITLE ── */
+.section-title{font-size:11.5px;letter-spacing:2px;text-transform:uppercase;color:var(--navy);opacity:0.5;font-weight:700;margin:28px 0 14px;display:flex;align-items:center;gap:8px}
 .section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+
+/* ── HOTEL INLINE PILLS ── */
+.hotel-pill{background:#e6ecf5;color:#1a2744;border-radius:20px;padding:3px 12px;font-size:12px;font-weight:600}
 
 .view{display:none}.view.active{display:block}
 </style>
+  <!-- Favicon & PWA Icons -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0id2hpdGUiLz48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSIzMCIgZmlsbD0iI0JDMDAyRCIvPjwvc3ZnPg=="/>
+  <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAABC0lEQVR42mP4T2PAMGrBULLg7/cfP569+vbgKZAEsqlmAdCs94fPPpm5+k7VxOvpTVcTaoAkkA0UAYoTtImABR9OXrrfNvuCb84Rebc9DLrICCgCFAfKAtWQacGrjfuA7j0k4YhmNDICygLVAFWSbAFQz6WQIjxGIyOgSlx2MOAKGaC7iDQdgoDqsYYVA9ZYBYYs/pDBGlZAXZhxjsUCYNoAxh5JpkMQUBdQL2ELgOkPM80Qg4C6gHoJWAD0IzCNk2E6BAH1ooUSugXAXArMR2RbANQLNAGfBcCSgNT0g5aWgCYMqA9oHgc0T0X0yAc0z8k0L4voUZrSoz6gR41GjzqZHq2K0ZYdrS0AAOrzROhtxHf9AAAAAElFTkSuQmCC"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,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"/>
+  <link rel="manifest" href="data:application/json;base64,eyJuYW1lIjoi5pel5pys5YyX5rW36YGTOOaXpemBiiIsInNob3J0X25hbWUiOiLljJfmtbfpgZMiLCJpY29ucyI6W3sic3JjIjoiZGF0YTppbWFnZS9wbmc7YmFzZTY0LGlWQk9SdzBLR2dvQUFBQU5TVWhFVWdBQUFNQUFBQURBQ0FJQUFBRGR2dnRRQUFBS0drbEVRVlI0MnUyZFQyaFQyUjdIaFM1bnRyTjRDM2VQMlQzTGU0c3BERGd3QTZJZ1Q0VHlIaUlNS2wyb3FJaWlDeXU2RUhGUlpMQkNCMEhvb2xBSWduUVJYWWdqMHo1OXhtY2RrMXByYW8waDB4Z05UYVZSMjhTVUpwbHZHeG0wdyt1MFNlNjU1OTc3K2ZLamhEUTU5M2QrOThQTitmTTc1NnlySXRTQTFoRUNCRUFJZ0JBQUlRQkNDSUFRQUNFQVFnQ0VFQUFoQUVJQWhBQUlJUUJDQUlRQUNBRVFRZ0NFQUFnQkVBSWdCRUFJQVJBQ0lBUkFDSUFRQWlBRVFBaUFFQUFoQkVBSWdCQUFJUUR5cThxbCtWSnVwcGpLek1hVGIyUGpiNFlmNXlNaitic3gvZFZydmFQMzlWOTlScDhrWEVFSGFLRlFuRXRNenR5SlRnM2Nlbkg1YXFxck45SFpQWDd3M05pZVU2TTdqbzlzUHh6ZGVpQzZaZC9Eelh2MVY2LzFqdDdYZi9VWmZWS2YxN2YwWFpXZ2NsUWFBQVVBbXJuQ3U5R0pYSGd3M1JONmR1TEMySzZUNHVQZTMvOTFlLzJtbnovNzZxZDFmMXU5NmZQNmxyNnJFbFNPU2xPWktsbmw2eW9BNUN2TlQrZjFuTWowRHVqSm9hZkkvYmFkLy9uTHQydkNaVFdtTWxXeXl0ZFZkQzFkVWRjRklHKzNhZFIyMGIyY09IWmV2MEgvL2V2V3BrUHovMHpYMGhWMVhWMWRQdmk0emVSUGdONW5wdlJya2p4ejZWSDcwYnRmL3RNWU4zODBYVjAreUJQNUk2OEF5SGFwUGZ1cS8vclRJMTBQTnU3KytmTTJGOUg1cE1IMGVadjhrVmZ5VFI0Q2tJMHFQRSsvN0F2SDk1Lzkzei8rYlFrM2Z6VDVKZy9scDd3RklGdFV5azVucjl4UTcxcDlJbXZSK2Rqa3A3eVZ6L0ljZ054VXBWSjVmVE9pWHMvdzE5OTdBcDJQVFQ3TGMvbXZXZ0NRQzVxTkp5Y3Y5c2UySGJLbnJWTkgyMGorcXhhcUN3QVpmUENVeTdsclEvb1ZjTGVIMWNTZW11cWlHcWxlQU9TNGlxbE11aWNVM1hyZ3A1WldIOUR6d1ZwYVZTUFZTN1VESUFlVmo0eW8zWEJ2UTd0LzBQbTRjYjJoWGJWVEhRSElFZVhDZzA4NlRnOTk4WTB2NmFtWmFxYzZxcVlBMUV3dEZJb3YrOElqMncvN0dKMlBUVFZWZlQweHcrOEJnRXE1bWZTUG9WKys2d2dJUFRWVGZWVnIxUjJBR3RMN3pOU3ZQL1RkYjlzWktIcHFwbHFyN3BiUG9Ga05VREdkVFhYMWVtVjgyYUV4YTBWQWNRQ2dlcDQ5aS9TMHRnZVduZzhNdGJZckR0WStoeXdGU0wvOWVub0grZG16N0Rta2FOalpIcklSSVBVKzFINE1acnRuaGZhUVltSmh2OHhHZ05TRERWcWZhNVg5TWtVR2dQNTh0REE0NHoxMWpBL1pOc1pvRjBENXlNaVRqdE9Bc29JcFBsYk5kVmdFVURHVlNYUjIrM3Vtb2lsekhZcVNQWE91dGdCVUtaZlRQU0cvenBJMmZjNVZzYklrOThNV2dITFhoaFl6Tk9CamRhWllLV0lBOUVHejhlVDR3WE8reXU5eFBuOUlFYk1oajlGOWdDcVZ5dVRGZm4va0Zock9ZMVRjWE0rbmRoK2cxemNqc1cySEFLSU9VOXdVdlVBRFZNcE9xMC9oM2F4NDEzUHlGVDEzMXdhNURGRDJ5ZzB2cnNpeGFtMlFZaGhRZ0FyUDA0dHRaemhvekJSREY5ZTV1Z25ReTc0dzgrMU5tYXQzY1k3TU5ZRG1FcFB4L1dlNS9VMHhSZEt0UFJ0Y0EraFYvM1diZDBId2xpbVNpbWVBQUhxZm1YcDZwSXNiMzBSVFBGM0pXblFIb0Z4NDhNSEczZHoxSnByaTZVcW1od3NBbFV2enlUT1hHUHRwK3BpUW9tcCtMejBYQUhvei9QaFIrMUZ1ZWROTlVWVnMvUTlRcG5lQW1TK0hac2NVVzU4RE5EK2RuemgybnB2dGtDbTJodmNXTmczUXpKMG9lVCtPNWdrcHduNEdTTTlZay9zMUI4MFVXOE8vWWtZQldwZ3JKRHE3dWMyT21pSnM4cXdGb3dDOUc1MFkzWEdjZSt5b0tjS0tzejhCeW9VSFdXOXFZQTJyeVJGRm93Q2xlMEpPbkhLQ0xUdnpSWEgySVVBTGhlS3pFeGU0d1FaTWNUYTJpdDRjUUhPSnliRmRKN203Qmt4eE5wYmRZUTZnbVR2Umg1djNjbmNObU9Kc2JEVElIRUJUQTdmSVB6U1dvNmhvK3cyZ0Y1ZXYzbDYvaWJ0cndCUm5SZHR2QUtXNmV0ZDZMaWxXWjJySFoxOHAycjRDcUZ5YVp3emE4SGkwbWR3Z1F3Q1Zjak9zNERHODFzZk1ub3FHQUNxbU1tTjdUbkZmemZYazk1d3lzNGVRSVlCbTQwbG13UXpQaUpuWnU4TVFRRzlqNCt4OGFIZzNSY1hjUHdDOUdYNU1IcG5oekRJeitkR0dBTXBIUnFKYjluRmZ6UUcwWlorWnZUaE5BWFEzeGp5RzRka014WnduRU1ZVGlEWVFiU0I2WWZUQ0dBZGlISWlSYUN5d0k5SE1oVEVYeG13OHMvSGtBNUVQUkVZaUZ0Q01SSEtpeVlsdVNLektZRlZHUTJKZEdPdkNHaElyVTFtWjJxaFlHOC9hK0liRTdoenN6dEdRMkIrSS9ZRWFhd2F4UXhrN2xEVW85a2gwMUh5K1IyS1ZYVnFkenlQeitTNnQ3QlB0cVBsL24rZ3FPOVU3Wm9IWXFiN0tXUm1PV1ZET3l1QzBIa2RTT0lKeldrK1Y4OEljc0FDZEYxYmx4RUlITEZnbkZsWTVNN1dwRnJnelU2dWMydHhVQytLcHpWWE9qVzllL21FUXo0MlhDcy9UclBWcHlnb2VSVEtJQUVuWkt6ZUd2LzRlQ09vMlJVOHhkUEVPdWd4UUtUdWQ2T3htVEtqdXNSOUZUekVNTGtEUzY1dVIyTFpEMEZDSEtXNktucnUzejMyQUtwWEs1TVYrWnNmcW1QbFMzQlM5b0FOVVhkcTdZN0UxM2RJS0ZxdTFsbFpGek16K0d4NEFhSEZ5NDlvUWVVSnJ5dnRSeEd5NGNiWUFWQ21YMHoyaGV4dmFnZVBQQjM0MnRDdFdpaGdBZmFKaUtxTSt4ZEFYMzRESUNxYjRLRXBtOXY3eEdFRFZwYjA0bjNTY2hwSVZUUEV4czN1bUp3R3FaWHF3bStJS094KzZrclBoSllCcWMyUy9mTmNCTHN0TU1YRnh6c3RMQUMwVWl1a2ZRNnhoWGJiZVZERXh0dUxkMndCVmwvWlUvUFdIUHVicWY1OXZWelRNN0hub0U0Q3FTMW1McWE3ZWU2MUI3OWdyQW9xREs5bUczZ1pvc1dPZnppNHlGT0Rua09xdUNDZ08xdDRqcXdHcVBZZjA5QTVtZTBpMVZ0MnRmZlo0QTZCYWUwanR4NkQxeTFSZjFkck9kby9IQUtyMXk5U0REYzc0a0dxcStsclk1L0lxUUwrUE1UN3BPTzN2dVE3VlRuVzBiYlRRSndEVjVqb1NuZDErblhOVnZWUTdxMllxL0FaUWJjNDEzUk5helAzd1UvNVFTNnRxcEhyWk0wdnFXNENxUzdrZnVXdEQ0d2ZQK1NPUFViVlFYVlFqU3pJMC9BOVFUYlB4NU9URi90aTJROTdOeVpmbjhsKzFzQ0czTUhBQVZaZnlxVi9maktqZDRNVzFRZkpabnN0LzEvT2Fnd3ZRaDRHaTdIVDJ5ZzM5Q25obHpGcCt5bHY1N082S0hBRDZSSVhuNlpkOTRmaitzemJ2MlNEZjVLSDhkSEV0S1FDdHBMbkU1S3YrNjArUGREM1l1TnVldHBFOGtUL3lTcjY1dFFzQ0FLMUI3ek5UdWZCZzhzeWxSKzFIM2UycDZlcnlRWjdJSDh0bnRRQm91Y3FsK1RmRGp6TzlBeFBIemtlM0hqQzVQN1d1cFN2cXVycTZmREMvOHh3QU5WUHowL21aTzFIZFMvVjZSbmNjdjkrMjA0a3pYMVNtU2xiNXVvcXVwU3NhM25FWGdCelh3bHpoM2VpRWZrM1NQYUZuSnk2TTdUcjVjUE5lOVlsdXI5KzAxdk5jOVhsOVM5OVZDU3BIcGFsTWxhenlUWjQwQUVEdXdWUW9xajJyNThUVXdLMFhsNittdW5yMTVGRHZlbXpQS1QxRlJyWWYxbTlRZE1zKzhhRy9lcTEzOUw3K3E4L29rL3E4dnFYdnFnU1Y0NG1aY3dCeXZNMVV5czBVVTVuWmVQSnRiRnh0bDN4a0pIODNwcjk2clhmMHZ2NnJ6L2k0VFFOQUNJQVFBQ0VBUWdpQUVBQWhBRUlBaEJBQUlRQkNBSVFBQ0NFQVFnQ0VBQWdCRUFJZ2hBQUlBUkFDSUFSQUNBRVFBaUFFUUFpQUVBSWdCRUFJZ0JBQUlRUkFDSUFRQUNFQVFnSFhiK1N5RjQvZ3AwMWhBQUFBQUVsRlRrU3VRbUNDIiwic2l6ZXMiOiIxOTJ4MTkyIiwidHlwZSI6ImltYWdlL3BuZyJ9XSwidGhlbWVfY29sb3IiOiIjMWEyNzQ0IiwiYmFja2dyb3VuZF9jb2xvciI6IiNmOGY2ZjIiLCJkaXNwbGF5Ijoic3RhbmRhbG9uZSJ9"/>
+  <meta name="theme-color" content="#1a2744"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <meta name="apple-mobile-web-app-title" content="北海道8日遊"/>
 </head>
 <body>
 
 <div class="banner">
   <svg class="banner-bg" viewBox="0 0 800 220" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="650" cy="40" r="180" fill="rgba(124,111,160,0.12)"/>
+    <circle cx="650" cy="40" r="180" fill="rgba(45,74,138,0.18)"/>
     <circle cx="750" cy="160" r="100" fill="rgba(255,255,255,0.04)"/>
     <circle cx="80" cy="30" r="1.5" fill="rgba(255,255,255,0.4)"/>
     <circle cx="200" cy="15" r="1" fill="rgba(255,255,255,0.3)"/>
@@ -148,15 +224,15 @@ html,body{width:100%;overflow-x:hidden;background:var(--cream);color:var(--text)
 
 <div class="tabs-wrapper">
   <div class="tabs" id="tabs">
-    <button class="tab active" onclick="showView('overview',this)">行程總覽</button>
-    <button class="tab" onclick="showView('day1',this)">第1天｜新千歲・札幌</button>
-    <button class="tab" onclick="showView('day2',this)">第2天｜小樽</button>
-    <button class="tab" onclick="showView('day3',this)">第3天｜札幌南區</button>
-    <button class="tab" onclick="showView('day4',this)">第4天｜札幌外圍</button>
-    <button class="tab" onclick="showView('day5',this)">第5天｜札幌市中心</button>
-    <button class="tab" onclick="showView('day6',this)">第6天｜旭川</button>
-    <button class="tab" onclick="showView('day7',this)">第7天｜登別</button>
-    <button class="tab" onclick="showView('day8',this)">第8天｜返台</button>
+    <button class="tab active" onclick="showView('overview',this)"><span class="tab-day">總覽</span><span class="tab-city">行程</span></button>
+    <button class="tab" onclick="showView('day1',this)"><span class="tab-day">第1天</span><span class="tab-city">札幌</span></button>
+    <button class="tab" onclick="showView('day2',this)"><span class="tab-day">第2天</span><span class="tab-city">小樽</span></button>
+    <button class="tab" onclick="showView('day3',this)"><span class="tab-day">第3天</span><span class="tab-city">札幌</span></button>
+    <button class="tab" onclick="showView('day4',this)"><span class="tab-day">第4天</span><span class="tab-city">札幌</span></button>
+    <button class="tab" onclick="showView('day5',this)"><span class="tab-day">第5天</span><span class="tab-city">札幌</span></button>
+    <button class="tab" onclick="showView('day6',this)"><span class="tab-day">第6天</span><span class="tab-city">旭川</span></button>
+    <button class="tab" onclick="showView('day7',this)"><span class="tab-day">第7天</span><span class="tab-city">登別</span></button>
+    <button class="tab" onclick="showView('day8',this)"><span class="tab-day">第8天</span><span class="tab-city">札幌</span></button>
   </div>
 </div>
 
@@ -178,13 +254,13 @@ html,body{width:100%;overflow-x:hidden;background:var(--cream);color:var(--text)
     </div>
     <div class="info-card full">
       <h4>🏨 住宿</h4>
-      <div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:4px">Hotel ONE'S RESIDENCE</div>
-      <div style="font-size:12px;color:var(--text-light);margin-bottom:10px">中央區南8條西2丁目5-67（地鐵中島公園駅步行5分）</div>
+      <div style="font-size:15px;font-weight:700;color:var(--navy);margin-bottom:4px">Hotel ONE'S RESIDENCE</div>
+      <div style="font-size:13px;color:var(--text-light);margin-bottom:10px">中央區南8條西2丁目5-67（地鐵中島公園駅步行5分）</div>
       <div style="display:flex;gap:10px;flex-wrap:wrap">
-        <span style="background:#f0edfa;color:#5a3fa0;border-radius:20px;padding:3px 12px;font-size:11px;font-weight:600">7晚</span>
-        <span style="background:#f0edfa;color:#5a3fa0;border-radius:20px;padding:3px 12px;font-size:11px;font-weight:600">€110/晚</span>
-        <span style="background:#e8f4fd;color:#1a6ea8;border-radius:20px;padding:3px 12px;font-size:11px;font-weight:600">小廚房・洗衣機</span>
-        <span style="background:#e8f4fd;color:#1a6ea8;border-radius:20px;padding:3px 12px;font-size:11px;font-weight:600">有電梯・冷氣</span>
+        <span style="background:#e6ecf5;color:#1a2744;border-radius:20px;padding:3px 12px;font-size:12px;font-weight:600">7晚</span>
+        <span style="background:#e6ecf5;color:#1a2744;border-radius:20px;padding:3px 12px;font-size:12px;font-weight:600">€110/晚</span>
+        <span style="background:#e6ecf5;color:#1a2744;border-radius:20px;padding:3px 12px;font-size:12px;font-weight:600">小廚房・洗衣機</span>
+        <span style="background:#e6ecf5;color:#1a2744;border-radius:20px;padding:3px 12px;font-size:12px;font-weight:600">有電梯・冷氣</span>
       </div>
     </div>
   </div>
@@ -294,13 +370,15 @@ function showView(id, btn) {
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   btn.classList.add('active');
-  btn.scrollIntoView({behavior:'smooth', block:'nearest', inline:'center'});
-  window.scrollTo({top:0, behavior:'smooth'});
+  // Scroll so the banner scrolls away and the sticky tab bar sits at top
+  const bannerH = document.querySelector('.banner').offsetHeight;
+  window.scrollTo({top: bannerH, behavior:'smooth'});
 }
 
 function buildTimeline(containerId, stops) {
   const el = document.getElementById(containerId);
   if (!el) return;
+  let stopNum = 0;
   el.innerHTML = stops.map((s, i) => {
     if (s.type === 'transport') {
       return `<div class="stop transport">
@@ -316,15 +394,16 @@ function buildTimeline(containerId, stops) {
         </div>
       </div>`;
     }
+    stopNum++;
     const id = `stop-${containerId}-${i}`;
     const tags = (s.tags||[]).map(t=>`<span class="tag ${t.type}">${t.text}</span>`).join('');
     return `<div class="stop">
-      <div class="stop-dot" style="font-size:9px;font-weight:700;color:var(--lavender)">${i+1}</div>
+      <div class="stop-dot">${stopNum}</div>
       <div class="stop-card" id="${id}" onclick="toggleStop('${id}')">
         <div class="stop-head">
           <div class="stop-icon">${s.icon}</div>
           <div class="stop-info">
-            <div class="stop-label" style="color:var(--lavender);font-size:10px;font-weight:600;letter-spacing:1px">${s.label}</div>
+            <div class="stop-label">${s.label}</div>
             <div class="stop-name">${s.name}</div>
           </div>
           <div class="stop-arrow">▼</div>
