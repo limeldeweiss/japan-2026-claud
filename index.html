@@ -33,8 +33,12 @@ html,body{width:100%;overflow-x:hidden;background:var(--cream);color:var(--text)
 .banner-title span{color:var(--gold-light)}
 .banner-sub{margin-top:14px;font-size:14px;color:rgba(255,255,255,0.78);line-height:1.85}
 .banner-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
-.pill{background:rgba(255,255,255,0.10);border:1px solid rgba(255,255,255,0.22);border-radius:20px;padding:5px 14px;font-size:12px;color:rgba(255,255,255,0.9);letter-spacing:0.3px}
+.pill{background:rgba(255,255,255,0.10);border:1px solid rgba(255,255,255,0.22);border-radius:20px;padding:6px 16px;font-size:12px;color:rgba(255,255,255,0.9);letter-spacing:0.3px;cursor:pointer;font-family:'Noto Sans TC',sans-serif;display:inline-flex;flex-direction:column;align-items:center;gap:1px;transition:background 0.2s}
+.pill:hover{background:rgba(255,255,255,0.22)}
 .pill.red{background:var(--red);border-color:var(--red)}
+.pill.red:hover{background:#a93224}
+.pill-ja{font-size:13px;font-weight:600;line-height:1.2}
+.pill-en{font-size:10px;font-weight:400;opacity:0.65;letter-spacing:0.5px;line-height:1}
 .banner-mountain{position:absolute;bottom:0;left:0;right:0;pointer-events:none}
 
 /* ── NAV TABS ── */
@@ -211,28 +215,29 @@ html,body{width:100%;overflow-x:hidden;background:var(--cream);color:var(--text)
     <path d="M0 80 L80 50 L180 68 L300 38 L400 60 L520 28 L640 55 L760 35 L800 50 L800 80 Z" fill="rgba(255,255,255,0.06)"/>
   </svg>
   <div class="banner-content">
-    <div class="banner-eyebrow">✈ CHINA AIRLINES CI130 / CI131</div>
-    <div class="banner-title">日本<span>北海道</span><br/>8日遊</div>
-    <div class="banner-sub">2026年8月12日（三）— 8月19日（三）&nbsp;｜&nbsp;2大1青少年<br/>新千歲機場 → 札幌為基地，放射狀出遊</div>
+    <div class="banner-eyebrow">✈ 2026年暑假日本(Japan)北海道(Hokkaido)旅遊計劃</div>
+    <div class="banner-title">日本<span>北海道</span>8日遊</span></div>
+    <div class="banner-sub">2026年8月12日 — 8月19日</div>
     <div class="banner-pills">
-      <div class="pill red">CI130 抵達 13:35</div>
-      <div class="pill">小樽 ∙ 旭川 ∙ 登別</div>
-      <div class="pill">7晚 Hotel ONE'S RESIDENCE</div>
+      <button class="pill red" onclick="jumpToCity('札幌')"><span class="pill-ja">札幌</span><span class="pill-en">Sapporo</span></button>
+      <button class="pill" onclick="jumpToCity('小樽')"><span class="pill-ja">小樽</span><span class="pill-en">Otaru</span></button>
+      <button class="pill" onclick="jumpToCity('旭川')"><span class="pill-ja">旭川*</span><span class="pill-en">Asahikawa</span></button>
+      <button class="pill" onclick="jumpToCity('登別')"><span class="pill-ja">登別</span><span class="pill-en">Noboribetsu</span></button>
     </div>
   </div>
 </div>
 
 <div class="tabs-wrapper">
   <div class="tabs" id="tabs">
-    <button class="tab active" onclick="showView('overview',this)"><span class="tab-day">總覽</span><span class="tab-city">行程</span></button>
-    <button class="tab" onclick="showView('day1',this)"><span class="tab-day">第1天</span><span class="tab-city">札幌</span></button>
-    <button class="tab" onclick="showView('day2',this)"><span class="tab-day">第2天</span><span class="tab-city">小樽</span></button>
-    <button class="tab" onclick="showView('day3',this)"><span class="tab-day">第3天</span><span class="tab-city">札幌</span></button>
-    <button class="tab" onclick="showView('day4',this)"><span class="tab-day">第4天</span><span class="tab-city">札幌</span></button>
-    <button class="tab" onclick="showView('day5',this)"><span class="tab-day">第5天</span><span class="tab-city">札幌</span></button>
-    <button class="tab" onclick="showView('day6',this)"><span class="tab-day">第6天</span><span class="tab-city">旭川</span></button>
-    <button class="tab" onclick="showView('day7',this)"><span class="tab-day">第7天</span><span class="tab-city">登別</span></button>
-    <button class="tab" onclick="showView('day8',this)"><span class="tab-day">第8天</span><span class="tab-city">札幌</span></button>
+    <button class="tab active" onclick="showView('overview',this)"><span class="tab-day">總覽<br>全部</span><span class="tab-city">行程</span></button>
+    <button class="tab" onclick="showView('day1',this)"><span class="tab-day">第1天<br>8/12(三)</span><span class="tab-city">札幌</span></button>
+    <button class="tab" onclick="showView('day2',this)"><span class="tab-day">第2天<br>8/13(四)</span><span class="tab-city">小樽</span></button>
+    <button class="tab" onclick="showView('day3',this)"><span class="tab-day">第3天<br>8/14(五)</span><span class="tab-city">札幌</span></button>
+    <button class="tab" onclick="showView('day4',this)"><span class="tab-day">第4天<br>8/15(六)</span><span class="tab-city">札幌</span></button>
+    <button class="tab" onclick="showView('day5',this)"><span class="tab-day">第5天<br>8/16(日)</span><span class="tab-city">札幌</span></button>
+    <button class="tab" onclick="showView('day6',this)"><span class="tab-day">第6天<br>8/17(一)</span><span class="tab-city">旭川</span></button>
+    <button class="tab" onclick="showView('day7',this)"><span class="tab-day">第7天<br>8/18(二)</span><span class="tab-city">登別</span></button>
+    <button class="tab" onclick="showView('day8',this)"><span class="tab-day">第8天<br>8/19(三)</span><span class="tab-city">札幌</span></button>
   </div>
 </div>
 
@@ -240,7 +245,7 @@ html,body{width:100%;overflow-x:hidden;background:var(--cream);color:var(--text)
 
 <div class="view active" id="overview">
   <div class="overview-hero">
-    <h2>🗾 北海道家庭旅遊</h2>
+    <h2>🗾 2026年8月北海道旅遊</h2>
     <p>以札幌為基地，每日放射狀出遊。8月北海道氣溫約20–27°C，恰逢薰衣草季末、啤酒花園旺季，全程7晚住同一飯店，省去搬行李的煩惱。</p>
   </div>
   <div class="info-grid">
@@ -293,7 +298,7 @@ html,body{width:100%;overflow-x:hidden;background:var(--cream);color:var(--text)
 <div class="view" id="day1">
   <div class="day-header">
     <div class="day-num">DAY 01 · 8月12日（三）</div>
-    <div class="day-title">抵達新千歲<br/>初遊札幌</div>
+    <div class="day-title">札幌</div>
     <div class="day-city-pill">🛬 新千歲機場 → 札幌</div>
   </div>
   <div class="timeline" id="tl-day1"></div>
@@ -302,7 +307,7 @@ html,body{width:100%;overflow-x:hidden;background:var(--cream);color:var(--text)
 <div class="view" id="day2">
   <div class="day-header">
     <div class="day-num">DAY 02 · 8月13日（四）</div>
-    <div class="day-title">小樽<br/>運河・玻璃・甜點</div>
+    <div class="day-title">小樽</div>
     <div class="day-city-pill">🌊 小樽一日遊</div>
   </div>
   <div class="timeline" id="tl-day2"></div>
@@ -311,7 +316,7 @@ html,body{width:100%;overflow-x:hidden;background:var(--cream);color:var(--text)
 <div class="view" id="day3">
   <div class="day-header">
     <div class="day-num">DAY 03 · 8月14日（五）</div>
-    <div class="day-title">札幌南區<br/>藻岩山・神宮・夜景</div>
+    <div class="day-title">札幌</div>
     <div class="day-city-pill">🏔️ 札幌深度遊</div>
   </div>
   <div class="timeline" id="tl-day3"></div>
@@ -320,8 +325,8 @@ html,body{width:100%;overflow-x:hidden;background:var(--cream);color:var(--text)
 <div class="view" id="day4">
   <div class="day-header">
     <div class="day-num">DAY 04 · 8月15日（六）</div>
-    <div class="day-title">札幌外圍<br/>羊丘・職棒球場</div>
-    <div class="day-city-pill">⚾ 農業文化・職棒</div>
+    <div class="day-title">札幌</div>
+    <div class="day-city-pill">⚾ 札幌深度遊</div>
   </div>
   <div class="timeline" id="tl-day4"></div>
 </div>
@@ -329,7 +334,7 @@ html,body{width:100%;overflow-x:hidden;background:var(--cream);color:var(--text)
 <div class="view" id="day5">
   <div class="day-header">
     <div class="day-num">DAY 05 · 8月16日（日）</div>
-    <div class="day-title">札幌市中心<br/>歷史・北大・夜遊</div>
+    <div class="day-title">札幌</div>
     <div class="day-city-pill">🏛️ 市中心歷史漫遊</div>
   </div>
   <div class="timeline" id="tl-day5"></div>
@@ -338,7 +343,7 @@ html,body{width:100%;overflow-x:hidden;background:var(--cream);color:var(--text)
 <div class="view" id="day6">
   <div class="day-header">
     <div class="day-num">DAY 06 · 8月17日（一）</div>
-    <div class="day-title">旭川<br/>拉麵・旭橋・商店街</div>
+    <div class="day-title">旭川</div>
     <div class="day-city-pill">🍜 旭川一日遊</div>
   </div>
   <div class="timeline" id="tl-day6"></div>
@@ -347,8 +352,8 @@ html,body{width:100%;overflow-x:hidden;background:var(--cream);color:var(--text)
 <div class="view" id="day7">
   <div class="day-header">
     <div class="day-num">DAY 07 · 8月18日（二）</div>
-    <div class="day-title">登別<br/>地獄谷・溫泉・鬼火</div>
-    <div class="day-city-pill">🌋 登別溫泉一日遊</div>
+    <div class="day-title">登別</div>
+    <div class="day-city-pill">🌋 登別一日遊</div>
   </div>
   <div class="timeline" id="tl-day7"></div>
 </div>
@@ -356,7 +361,7 @@ html,body{width:100%;overflow-x:hidden;background:var(--cream);color:var(--text)
 <div class="view" id="day8">
   <div class="day-header">
     <div class="day-num">DAY 08 · 8月19日（三）</div>
-    <div class="day-title">最後購物<br/>返回台灣</div>
+    <div class="day-title">札幌</div>
     <div class="day-city-pill">✈ 新千歲 CI131 15:05</div>
   </div>
   <div class="timeline" id="tl-day8"></div>
@@ -365,6 +370,28 @@ html,body{width:100%;overflow-x:hidden;background:var(--cream);color:var(--text)
 </div>
 
 <script>
+// 城市名對應首個tab（同城市取最早那天）
+const cityTabMap = {
+  '札幌': 'day1',
+  '小樽': 'day2',
+  '旭川': 'day6',
+  '登別': 'day7',
+};
+
+function jumpToCity(city) {
+  const viewId = cityTabMap[city];
+  if (!viewId) return;
+  // 找到對應的 tab button
+  const tabs = document.querySelectorAll('.tab');
+  let targetBtn = null;
+  tabs.forEach(t => {
+    if (t.getAttribute('onclick') === "showView('" + viewId + "',this)") {
+      targetBtn = t;
+    }
+  });
+  if (targetBtn) showView(viewId, targetBtn);
+}
+
 function showView(id, btn) {
   document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
